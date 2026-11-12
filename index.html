@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Godfred Nsiah Portfolio</title>
+<meta name="description" content="Godfred Nsiah: B2B growth, CRM and marketing analytics portfolio. Tableau dashboards, HubSpot CRM and Make automation built around one partner-acquisition business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: the page is the commercial cycle itself, a numbered spine of stages (research → campaigns → funnel → retention → CRM & automation → decisions), each stage a project. */
+:root{
+  --paper:#F3F4F1;
+  --surface:#FFFFFF;
+  --ink:#16202A;
+  --muted:#5B6672;
+  --line:#D9DDD8;
+  --accent:#C9541F;
+  --accent-soft:#F6E3D8;
+  --steel:#2E5A78;
+  --good:#2F7A4F;
+  --display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11171D; --surface:#18212A; --ink:#E7EBEE; --muted:#9AA6B1;
+    --line:#2A3540; --accent:#E8743D; --accent-soft:#3A2419; --steel:#7FB0D1; --good:#6CC08F;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11171D; --surface:#18212A; --ink:#E7EBEE; --muted:#9AA6B1;
+  --line:#2A3540; --accent:#E8743D; --accent-soft:#3A2419; --steel:#7FB0D1; --good:#6CC08F;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:var(--steel);text-underline-offset:3px}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* Header */
+header{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.top{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end}
+.kicker{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.04em;margin:0 0 12px}
+h1{font-size:clamp(40px,6vw,64px);font-weight:700;letter-spacing:-.01em}
+.role{font-family:var(--display);font-size:22px;font-weight:500;color:var(--accent);margin:8px 0 18px}
+.lede{max-width:60ch;margin:0 0 22px;color:var(--ink)}
+.de{max-width:60ch;margin:0 0 24px;color:var(--muted);font-size:15px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);text-decoration:none;font-weight:500;font-size:15px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.fact{background:var(--surface);padding:16px}
+.fact b{display:block;font-family:var(--mono);font-size:26px;font-weight:500;font-variant-numeric:tabular-nums}
+.fact span{font-size:13px;color:var(--muted)}
+
+/* Story strip */
+.story{padding:36px 0;border-bottom:1px solid var(--line)}
+.story h2{font-size:15px;font-family:var(--mono);font-weight:500;color:var(--muted);letter-spacing:.04em;margin-bottom:14px}
+.cycle{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;list-style:none;margin:0;padding:0;counter-reset:s}
+.cycle li{counter-increment:s;border-top:3px solid var(--line);padding-top:10px;font-size:14px}
+.cycle li::before{content:"0" counter(s);display:block;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.cycle li.hl{border-top-color:var(--accent)}
+.cycle a{color:var(--ink);text-decoration:none;font-weight:600}
+.cycle a:hover{color:var(--accent)}
+
+/* Stages */
+main{padding:24px 0 40px}
+.stage{display:grid;grid-template-columns:96px 1fr;gap:24px;padding:40px 0;border-bottom:1px solid var(--line)}
+.stage-no{font-family:var(--mono);font-size:40px;color:var(--accent);line-height:1}
+.stage-no small{display:block;font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:.04em}
+.stage h2{font-size:32px;font-weight:600;margin-bottom:6px}
+.q{font-size:18px;color:var(--muted);margin:0 0 20px;max-width:62ch}
+.cols{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:start}
+.cols p{margin:0 0 12px;max-width:62ch}
+.find{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:10px}
+.find li{padding-left:14px;border-left:3px solid var(--accent-soft)}
+.find strong{font-weight:600}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 16px;padding:0;list-style:none}
+.tools li{font-family:var(--mono);font-size:12px;padding:3px 8px;border:1px solid var(--line);border-radius:4px;color:var(--muted);background:var(--surface)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px}
+.card h3{font-size:15px;font-family:var(--mono);font-weight:500;color:var(--muted);margin-bottom:12px;letter-spacing:.02em}
+.open{display:inline-flex;margin-top:14px;font-weight:600;text-decoration:none;color:var(--accent)}
+.open:hover{text-decoration:underline}
+
+/* Mini charts drawn from the real figures */
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:120px 1fr 64px;gap:10px;align-items:center;font-size:13px}
+.bar .track{height:14px;background:var(--paper);border-radius:3px;overflow:hidden}
+.bar .fill{height:100%;background:var(--steel);border-radius:3px}
+.bar .fill.a{background:var(--accent)}
+.bar .v{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.note{font-size:12px;color:var(--muted);margin-top:10px}
+
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line)}
+th{font-weight:500;color:var(--muted);font-size:12px;font-family:var(--mono)}
+td.r,th.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+tfoot td{font-weight:600;border-bottom:0}
+
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;margin:0 0 6px;padding:0;list-style:none}
+.flow li{padding:6px 10px;border:1px solid var(--line);border-radius:5px;background:var(--paper)}
+.flow li.arrow{border:0;background:none;padding:0 2px;color:var(--muted)}
+.flow li.err{border-color:var(--accent);color:var(--accent)}
+
+.recs{counter-reset:r;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.recs li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.recs li::before{counter-increment:r;content:counter(r);font-family:var(--mono);font-size:22px;color:var(--accent);line-height:1.2}
+.recs b{display:block}
+.recs span{color:var(--muted);font-size:14px}
+
+.shot{margin:24px 0 0;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px}
+.shot img{display:block;width:100%;height:auto;border-radius:4px;background:#fff}
+.shot figcaption{font-size:13px;color:var(--muted);margin-top:10px}
+.shot.narrow{max-width:560px}
+
+/* Footer */
+.disclaimer{background:var(--accent-soft);border-radius:8px;padding:16px 18px;font-size:14px;margin:32px 0 0}
+footer{padding:40px 0 56px}
+.contact{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start}
+.contact h2{font-size:28px;margin-bottom:10px}
+.contact p{margin:0 0 10px;max-width:58ch}
+.skills{display:grid;gap:10px;font-size:14px}
+.skills div{display:grid;grid-template-columns:110px 1fr;gap:10px}
+.skills dt,.skills .k{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:2px}
+.small{font-size:13px;color:var(--muted)}
+
+@media (max-width:860px){
+  .top,.cols,.contact{grid-template-columns:1fr}
+  .cycle{grid-template-columns:repeat(3,1fr);row-gap:16px}
+  .stage{grid-template-columns:1fr;gap:10px}
+  .stage-no{font-size:28px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .cycle{grid-template-columns:repeat(2,1fr)}
+  .bar{grid-template-columns:96px 1fr 56px}
+  .facts{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <div>
+      <p class="kicker">PORTFOLIO · B2B GROWTH · CRM · MARKETING ANALYTICS</p>
+      <h1>Godfred Nsiah</h1>
+      <p class="role">I analyse the market, then build the systems that act on it.</p>
+      <p class="lede">Zone Manager for B2B partner sales in Thüringen. This portfolio follows one business from market research to automated CRM workflows: Tableau dashboards for the analysis, HubSpot and Make for the operation.</p>
+      <p class="de" lang="de">Kurz auf Deutsch: Ein durchgängiges Projekt von der Marktanalyse über Kampagnen und Vertriebsfunnel bis zur CRM-Automatisierung. Datenbasierte Entscheidungen, die im Tagesgeschäft umgesetzt werden.</p>
+      <div class="links">
+        <a class="btn primary" href="https://www.linkedin.com/in/godfred-nsiah/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://public.tableau.com/app/profile/godfred.nsiah/vizzes" target="_blank" rel="noopener">Tableau Public</a>
+        <a class="btn" href="https://github.com/Godfred-Nsiah" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.salesforce.com/trailblazer/godfredasantensiah" target="_blank" rel="noopener">Salesforce Trailhead</a>
+      </div>
+    </div>
+    <div class="facts" aria-label="Project at a glance">
+      <div class="fact"><b>96</b><span>active B2B partners modelled</span></div>
+      <div class="fact"><b>148,991</b><span>SIM cards sold, Mar 2024 – May 2025</span></div>
+      <div class="fact"><b>5</b><span>Tableau dashboards</span></div>
+      <div class="fact"><b>1</b><span>live HubSpot + Make automation</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="story" aria-labelledby="story-h">
+  <div class="wrap">
+    <h2 id="story-h">ONE COMMERCIAL CYCLE, SIX STAGES</h2>
+    <ol class="cycle">
+      <li><a href="#research">Market research</a></li>
+      <li><a href="#campaigns">Campaigns</a></li>
+      <li><a href="#funnel">Sales funnel</a></li>
+      <li><a href="#retention">Retention</a></li>
+      <li class="hl"><a href="#crm">CRM &amp; automation</a></li>
+      <li><a href="#decisions">Decisions</a></li>
+    </ol>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- 01 Research -->
+  <section class="stage" id="research" aria-labelledby="h-research">
+    <div class="stage-no">01<small>RESEARCH</small></div>
+    <div>
+      <h2 id="h-research">Where should we grow?</h2>
+      <p class="q">Competitive analysis of the prepaid telecom market in Thüringen: 13 carriers across 15 cities.</p>
+      <div class="cols">
+        <div>
+          <ul class="find">
+            <li><strong>The market is split by channel.</strong> Big 4 carriers sell through own stores and retailers, discounters through supermarkets, ethnic carriers through ethnic shops and kiosks.</li>
+            <li><strong>No ethnic carrier sells in supermarkets.</strong> That gap became a recommendation: pilot a supermarket partnership in Erfurt.</li>
+            <li><strong>Lebara and Ortel are the direct threats</strong>, competing for the same migrant communities on international-minute bundles.</li>
+          </ul>
+          <ul class="tools"><li>Tableau</li><li>Map layers</li><li>Competitive scoring</li></ul>
+          <a class="open" href="https://public.tableau.com/views/MarketResearchPrepaidTelecomLandscapeThringen/MarketResearchDashboard" target="_blank" rel="noopener">Open the Market Research dashboard ↗</a>
+        </div>
+        <div class="card">
+          <h3>CHANNELS USED, BY CARRIER TYPE</h3>
+          <table>
+            <thead><tr><th>Carrier type</th><th>Main channels</th></tr></thead>
+            <tbody>
+              <tr><td>Big 4</td><td>Own store, retailer, online</td></tr>
+              <tr><td>Discounters</td><td>Supermarket, convenience, online</td></tr>
+              <tr><td>Ethnic / intl.</td><td>Ethnic shop, kiosk, mobile shop</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <figure class="shot"><img src="img/market.jpg" alt="Tableau chart: prepaid market share by city in Thüringen, each city split into carrier shares adding to 100%" loading="lazy"><figcaption>Prepaid market share by city: each bar is one city, split by carrier (Lycatel in orange).</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 02 Campaigns -->
+  <section class="stage" id="campaigns" aria-labelledby="h-campaigns">
+    <div class="stage-no">02<small>CAMPAIGNS</small></div>
+    <div>
+      <h2 id="h-campaigns">Which campaigns pay off?</h2>
+      <p class="q">Return on investment and conversion for 12 campaigns across 96 partners, March 2024 to May 2025.</p>
+      <div class="cols">
+        <div>
+          <ul class="find">
+            <li><strong>B2B engagement campaigns return about twice as much</strong> as product launches: around 61% ROI against around 30%.</li>
+            <li><strong>Poster + SMS converts better for 3 of 4 partner segments.</strong> In-store visits with flyers win only with Premium partners.</li>
+            <li><strong>Premium partners</strong> cluster at €13,000–20,000 revenue; At-Risk partners stay under €4,000.</li>
+          </ul>
+          <ul class="tools"><li>Tableau</li><li>Calculated fields</li><li>Reference lines</li></ul>
+          <a class="open" href="https://public.tableau.com/app/profile/godfred.nsiah/vizzes" target="_blank" rel="noopener">Open the Campaign Performance dashboard ↗</a>
+        </div>
+        <div class="card">
+          <h3>AVERAGE ROI BY CAMPAIGN</h3>
+          <div class="bars">
+            <div class="bar"><span>Spring Partner Growth</span><div class="track"><div class="fill a" style="width:100%"></div></div><span class="v">62%</span></div>
+            <div class="bar"><span>Q2 Partner Activation</span><div class="track"><div class="fill a" style="width:97%"></div></div><span class="v">60%</span></div>
+            <div class="bar"><span>Spring SIM Launch</span><div class="track"><div class="fill" style="width:51%"></div></div><span class="v">32%</span></div>
+            <div class="bar"><span>Summer Data Bundle</span><div class="track"><div class="fill" style="width:48%"></div></div><span class="v">30%</span></div>
+            <div class="bar"><span>New Year SIM Deal</span><div class="track"><div class="fill" style="width:45%"></div></div><span class="v">28%</span></div>
+          </div>
+          <p class="note">Orange: B2B engagement. Blue: product launch. Portfolio average 42%.</p>
+        </div>
+      </div>
+      <figure class="shot"><img src="img/campaign.jpg" alt="Tableau Campaign Performance dashboard: monthly SIM trend, ROI by campaign, conversion by segment, revenue map and partner scatter" loading="lazy"><figcaption>Campaign Performance dashboard in Tableau.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 03 Funnel -->
+  <section class="stage" id="funnel" aria-labelledby="h-funnel">
+    <div class="stage-no">03<small>FUNNEL</small></div>
+    <div>
+      <h2 id="h-funnel">Where do we lose partners?</h2>
+      <p class="q">The B2B sales funnel from first visit to active partner, plus acquisition channels and revenue growth.</p>
+      <div class="cols">
+        <div>
+          <ul class="find">
+            <li><strong>46% of approached shops become active partners</strong> (91 of 198).</li>
+            <li><strong>The biggest loss is the first step:</strong> 27% of shops never reach a demo, against 5% lost between onboarding and activation. The fix is a stronger first-visit pitch.</li>
+            <li><strong>These conversion rates set the win probabilities</strong> in the HubSpot pipeline (stage 05), so the CRM forecast is based on history, not guesses.</li>
+          </ul>
+          <ul class="tools"><li>Tableau</li><li>Table calculations</li><li>GA4 web data</li></ul>
+          <a class="open" href="https://public.tableau.com/views/B2BSalesFunnelGrowthAnalyticsLycatelThringen/B2BGrowthAnalytics" target="_blank" rel="noopener">Open the B2B Growth Analytics dashboard ↗</a>
+        </div>
+        <div class="card">
+          <h3>PARTNERS PER FUNNEL STAGE</h3>
+          <div class="bars">
+            <div class="bar"><span>Cold approach</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v">198</span></div>
+            <div class="bar"><span>Interest &amp; demo</span><div class="track"><div class="fill" style="width:73%"></div></div><span class="v">145</span></div>
+            <div class="bar"><span>Negotiation</span><div class="track"><div class="fill" style="width:60%"></div></div><span class="v">118</span></div>
+            <div class="bar"><span>Onboarding</span><div class="track"><div class="fill" style="width:48%"></div></div><span class="v">96</span></div>
+            <div class="bar"><span>Active partner</span><div class="track"><div class="fill a" style="width:46%"></div></div><span class="v">91</span></div>
+          </div>
+          <p class="note">Bar length = share of the first stage.</p>
+        </div>
+      </div>
+      <figure class="shot narrow"><img src="img/funnel.jpg" alt="Tableau B2B sales funnel: 198, 145, 118, 96 and 91 partners per stage with share of first stage" loading="lazy"><figcaption>The funnel as built in the B2B Growth Analytics dashboard.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 04 Retention -->
+  <section class="stage" id="retention" aria-labelledby="h-retention">
+    <div class="stage-no">04<small>RETENTION</small></div>
+    <div>
+      <h2 id="h-retention">Who needs a visit this week?</h2>
+      <p class="q">A churn-risk score for every partner, built from visit frequency, revenue trend and NPS, turned into a weekly visit list.</p>
+      <div class="cols">
+        <div>
+          <ul class="find">
+            <li><strong>Each partner gets a risk score and category</strong> (critical, high, medium, low) with a recommended action.</li>
+            <li><strong>The weekly visit list ranks shops by revenue at risk</strong>, so field time goes where losing a partner would cost most.</li>
+            <li><strong>Retention is tracked monthly against a 95% target</strong>, with NPS alongside.</li>
+          </ul>
+          <ul class="tools"><li>Tableau</li><li>Scoring model</li><li>Parameters</li></ul>
+          <a class="open" href="https://public.tableau.com/views/CustomerRetentionChurnRiskLycatelThringen/RetentionAnalytics" target="_blank" rel="noopener">Open the Retention dashboard ↗</a>
+        </div>
+        <div class="card">
+          <h3>FROM SCORE TO ACTION</h3>
+          <table>
+            <thead><tr><th>Risk category</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>Critical</td><td>Visit this week, owner meeting</td></tr>
+              <tr><td>High</td><td>Visit within 14 days, check reorders</td></tr>
+              <tr><td>Medium</td><td>Call, monitor NPS and revenue</td></tr>
+              <tr><td>Low</td><td>Regular visit cycle</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <figure class="shot"><img src="img/retention.jpg" alt="Tableau Retention dashboard: churn risk score per partner, retention rate and NPS by month, weekly visit priority by revenue at risk" loading="lazy"><figcaption>Retention &amp; Churn Risk dashboard in Tableau.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 05 CRM & automation -->
+  <section class="stage" id="crm" aria-labelledby="h-crm">
+    <div class="stage-no">05<small>OPERATION</small></div>
+    <div>
+      <h2 id="h-crm">Making it run every day: HubSpot CRM and Make</h2>
+      <p class="q">The analysis only matters if the sales team acts on it. I built the operating layer: a CRM pipeline and an automation that runs on its own.</p>
+      <div class="cols">
+        <div>
+          <p><strong>HubSpot CRM.</strong> A 5-stage partner pipeline with win probabilities, custom company properties for segment, churn risk and acquisition channel, an active segment that flags partners needing a visit, a DSGVO-compliant lead form, and a dashboard with a weighted revenue forecast.</p>
+          <p><strong>Make automation.</strong> Every day, Make calls the HubSpot REST API with a scoped service key and finds deals that reached Onboarding. For each new one it adds a row to an onboarding log in Google Sheets and emails the rep an onboarding checklist.</p>
+          <ul class="find">
+            <li><strong>No duplicates:</strong> a data store keyed on the HubSpot deal ID remembers every processed deal, so repeated runs never log or email twice.</li>
+            <li><strong>Failures are visible:</strong> if the API call fails, an error route sends an alert and marks the run as failed.</li>
+          </ul>
+          <p class="small">I also completed the Salesforce Administrator learning path on Trailhead, so the same CRM setup carries over to Salesforce. <a href="https://www.salesforce.com/trailblazer/godfredasantensiah" target="_blank" rel="noopener">See my Trailhead profile</a>.</p>
+          <ul class="tools"><li>HubSpot</li><li>Make</li><li>REST API</li><li>Google Sheets</li><li>Gmail</li></ul>
+        </div>
+        <div class="card">
+          <h3>WEIGHTED FORECAST, OPEN PIPELINE</h3>
+          <table>
+            <thead><tr><th>Stage</th><th class="r">Deals</th><th class="r">Amount</th><th class="r">Weighted</th></tr></thead>
+            <tbody>
+              <tr><td>Cold approach</td><td class="r">3</td><td class="r">€33,800</td><td class="r">€3,380</td></tr>
+              <tr><td>Interest &amp; demo</td><td class="r">1</td><td class="r">€2,000</td><td class="r">€600</td></tr>
+              <tr><td>Negotiation</td><td class="r">1</td><td class="r">€5,000</td><td class="r">€3,000</td></tr>
+              <tr><td>Onboarding</td><td class="r">4</td><td class="r">€45,000</td><td class="r">€36,000</td></tr>
+            </tbody>
+            <tfoot><tr><td>Total</td><td class="r">9</td><td class="r">€85,800</td><td class="r">€42,980</td></tr></tfoot>
+          </table>
+          <h3 style="margin-top:20px">THE ONBOARDING AUTOMATION</h3>
+          <ul class="flow" aria-label="Automation steps">
+            <li>HubSpot API</li><li class="arrow">→</li>
+            <li>Iterator</li><li class="arrow">→</li>
+            <li>Already seen?</li><li class="arrow">→</li>
+            <li>Sheets log</li><li class="arrow">→</li>
+            <li>Email checklist</li><li class="arrow">→</li>
+            <li>Remember deal</li>
+          </ul>
+          <ul class="flow"><li class="err">On API error: alert email + rollback</li></ul>
+        </div>
+      </div>
+      <figure class="shot"><img src="img/hubspot.jpg" alt="HubSpot dashboard: Partner Pipeline and Forecast table and Partners by Channel bar chart" loading="lazy"><figcaption>HubSpot dashboard: open pipeline €85,800, weighted forecast €42,980 (amount × stage win probability).</figcaption></figure>
+      <figure class="shot"><img src="img/make.jpg" alt="Make scenario: HTTP request to HubSpot, iterator, data store check, Google Sheets, Gmail and data store write, with an error route to Gmail and rollback" loading="lazy"><figcaption>The Make scenario after a run: 4 Onboarding deals checked, 3 already known, 1 new deal logged and emailed. The lower route handles API errors.</figcaption></figure>
+      <figure class="shot"><img src="img/email.jpg" alt="Automatic email: New partner onboarding: Smartshop Partnership, with deal value and onboarding checklist" loading="lazy"><figcaption>The email the rep receives automatically, with the deal name and value filled in from HubSpot.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 06 Decisions -->
+  <section class="stage" id="decisions" aria-labelledby="h-decisions">
+    <div class="stage-no">06<small>DECISIONS</small></div>
+    <div>
+      <h2 id="h-decisions">What I would do next</h2>
+      <p class="q">Recommendations drawn from the dashboards above, ranked by priority.</p>
+      <ol class="recs">
+        <li><div><b>Recruit partners in Erfurt, Jena and Gera</b><span>The highest-priority gap cities with underserved migrant communities.</span></div></li>
+        <li><div><b>Shift budget toward B2B engagement campaigns</b><span>They return about twice the ROI of seasonal product launches.</span></div></li>
+        <li><div><b>Fix the first visit</b><span>27% of shops drop out before a demo, the biggest leak in the funnel.</span></div></li>
+        <li><div><b>Run monthly visits for high-risk partners</b><span>Driven by the weekly visit list and the HubSpot "needs a visit" segment.</span></div></li>
+        <li><div><b>Pilot a supermarket channel in Erfurt</b><span>No ethnic carrier is present there today.</span></div></li>
+      </ol>
+      <figure class="shot"><img src="img/growth.jpg" alt="Tableau Growth Analytics dashboard: GA4 web sessions by source, integrated growth index, campaign activity vs digital sessions, digital vs offline conversion, and the strategic recommendations table" loading="lazy"><figcaption>Growth Analytics dashboard, which combines GA4 web data with the sales funnel and ends in the growth plan.</figcaption></figure>
+      <p class="small" style="margin-top:16px">More work: a sentiment-analysis and escalation dashboard for the German energy market, on <a href="https://public.tableau.com/app/profile/godfred.nsiah/vizzes" target="_blank" rel="noopener">my Tableau Public profile</a>.</p>
+    </div>
+  </section>
+
+  <p class="disclaimer"><strong>About the data.</strong> All figures are simulated for portfolio purposes. They are based on realistic scenarios from my work as a zone manager, but they do not represent actual Lycatel company data, revenue or partner information.</p>
+</main>
+
+<footer>
+  <div class="wrap contact">
+    <div>
+      <h2>Let’s talk</h2>
+      <p>I am looking for roles in CRM, marketing operations, B2B growth and data analysis. Open to roles across Germany, on-site, hybrid or remote.</p>
+      <div class="links">
+        <a class="btn primary" href="https://www.linkedin.com/in/godfred-nsiah/" target="_blank" rel="noopener">Message me on LinkedIn</a>
+        <a class="btn" href="https://github.com/Godfred-Nsiah" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.salesforce.com/trailblazer/godfredasantensiah" target="_blank" rel="noopener">Salesforce Trailhead</a>
+      </div>
+    </div>
+    <div class="skills">
+      <div><span class="k">ANALYTICS</span><span>Tableau, R, Google Sheets, GA4</span></div>
+      <div><span class="k">CRM</span><span>HubSpot (pipeline, reporting, forms) · Salesforce: Trailhead Admin learning completed, Certified Administrator exam in preparation</span></div>
+      <div><span class="k">AUTOMATION</span><span>Make, REST APIs</span></div>
+      <div><span class="k">CERTIFICATES</span><span>Google Data Analytics, Google Digital Marketing &amp; E-commerce, AWS Cloud Practitioner</span></div>
+      <div><span class="k">EDUCATION</span><span>M.A. Media and Communication Science, TU Ilmenau</span></div>
+      <div><span class="k">LANGUAGES</span><span>English (native), German (C1, telc)</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
